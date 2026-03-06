@@ -24,10 +24,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white`}>
+        <nav className="flex items-center justify-between p-6 max-w-5xl mx-auto">
+          <div className="text-xl font-bold text-blue-400">Dev OS</div>
+          <div className="space-x-6">
+            <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
+            <a href="/projects" className="hover:text-blue-400 transition-colors">Projects</a>
+            <a href="/experience" className="hover:text-blue-400 transition-colors">Experience</a>
+          </div>
+        </nav>
+        
+        {/* This is where your page.tsx gets injected */}
+        {children} 
       </body>
     </html>
   );
