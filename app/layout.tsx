@@ -69,12 +69,9 @@ export default function RootLayout({
             <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Geeth Wickramasinghe. All rights reserved.</p>
             
             <div className="flex items-center space-x-6">
-              {/* IMPORTANT: Change this email to your actual email address! */}
+              
               <a href="mailto:geeth.stack@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">Email</a>
-              
-              {/* IMPORTANT: Add your actual LinkedIn profile link here! */}
               <a href="https://linkedin.com/in/geeth-wickramasinghe" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">LinkedIn</a>
-              
               <a href="https://github.com/Geetharu" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">GitHub</a>
             </div>
           </div>
