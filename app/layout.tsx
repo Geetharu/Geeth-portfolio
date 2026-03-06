@@ -32,13 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-gray-200 selection:bg-blue-500/30 relative min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-gray-200 selection:bg-blue-500/30 flex flex-col min-h-screen relative`}>
         
-        {/* UPGRADE 1: The Modern Grid Background */}
+        {/* The Modern Grid Background */}
         <div className="absolute inset-0 z-[-1] h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         
-        {/* UPGRADE 2: Sticky Glassmorphism Navbar */}
-        <nav className="sticky top-0 z-50 flex items-center justify-between p-6 max-w-5xl mx-auto backdrop-blur-md border-b border-gray-800/50 bg-[#0a0a0a]/70">
+        {/* Sticky Glassmorphism Navbar */}
+        <nav className="sticky top-0 z-50 flex items-center justify-between p-6 max-w-5xl mx-auto w-full backdrop-blur-md border-b border-gray-800/50 bg-[#0a0a0a]/70">
           <div className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
             Dev OS
           </div>
@@ -47,7 +47,7 @@ export default function RootLayout({
             <a href="/projects" className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Projects</a>
             <a href="/experience" className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Experience</a>
             
-            {/* UPGRADE 3: The Glowing Resume Button */}
+            {/* The Glowing Resume Button */}
             <a 
               href="/resume.pdf" 
               target="_blank" 
@@ -58,7 +58,28 @@ export default function RootLayout({
           </div>
         </nav>
         
-        {children} 
+        {/* Main Page Content */}
+        <div className="flex-grow">
+          {children} 
+        </div>
+
+        {/* NEW: The Contact Footer */}
+        <footer className="border-t border-gray-800/50 bg-[#0a0a0a]/90 backdrop-blur-sm py-8 mt-auto z-40 relative">
+          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Geeth Wickramasinghe. All rights reserved.</p>
+            
+            <div className="flex items-center space-x-6">
+              {/* IMPORTANT: Change this email to your actual email address! */}
+              <a href="mailto:geeth.stack@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">Email</a>
+              
+              {/* IMPORTANT: Add your actual LinkedIn profile link here! */}
+              <a href="https://linkedin.com/in/geeth-wickramasinghe" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">LinkedIn</a>
+              
+              <a href="https://github.com/Geetharu" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">GitHub</a>
+            </div>
+          </div>
+        </footer>
+
       </body>
     </html>
   );
