@@ -1,21 +1,68 @@
 export default function Projects() {
   const projects = [
-    { title: "Project Alpha", tech: "Next.js, Tailwind", desc: "A high-performance e-commerce dashboard." },
-    { title: "Project Beta", tech: "React, Node.js", desc: "Real-time chat application with WebSockets." },
-    { title: "Project Gamma", tech: "TypeScript, API", desc: "Weather data aggregator and visualizer." },
-    { title: "Project Delta", tech: "Next.js, AI", desc: "AI-powered resume analyzer." }
+    { 
+      title: "Dev OS Portfolio", 
+      tech: ["Next.js", "React", "Tailwind", "AI"], 
+      desc: "An interactive, terminal-themed developer portfolio featuring a custom AI assistant powered by the Gemini API.",
+      link: "https://github.com/Geetharu/Geeth-portfolio" 
+    },
+    { 
+      title: "Spring Boot API Service", 
+      tech: ["Java", "Spring Boot", "REST API", "MySQL"], 
+      desc: "A robust backend system handling user authentication, data processing, and secure endpoint management." 
+    },
+    { 
+      title: "Automation & Transcription Tool", 
+      tech: ["Python", "Macros", "Automation"], 
+      desc: "Automated workflow scripts designed to process and format transcription data, significantly reducing manual entry time." 
+    },
+    { 
+      title: "AI Portrait Generator", 
+      tech: ["React", "Node.js", "AI Integration"], 
+      desc: "A web application that allows users to generate custom portraits in various artistic styles using generative AI models." 
+    }
   ];
 
   return (
-    <main className="flex min-h-[80vh] flex-col items-center justify-start p-10 max-w-5xl mx-auto">
-      <h1 className="text-4xl font-bold text-blue-400 mb-10 border-b border-gray-800 pb-4 w-full text-center">Active Projects</h1>
+    <main className="flex min-h-[80vh] flex-col items-center justify-start p-10 max-w-6xl mx-auto relative z-10">
+      <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-12 border-b border-gray-800/50 pb-6 w-full text-center">
+        Featured Projects
+      </h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
         {projects.map((project, index) => (
-          <div key={index} className="border border-gray-700 bg-gray-900/50 p-6 rounded-lg hover:border-blue-500 transition-colors cursor-pointer group">
-            <h2 className="text-2xl font-semibold text-gray-100 group-hover:text-blue-400 transition-colors">{project.title}</h2>
-            <p className="text-sm text-green-400 font-mono mt-2 mb-4">{project.tech}</p>
-            <p className="text-gray-400">{project.desc}</p>
+          <div key={index} className="flex flex-col justify-between border border-gray-700/50 bg-[#0a0a0a]/80 backdrop-blur-md p-8 rounded-2xl hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500 group">
+            
+            {/* Top Section: Title & Description */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors mb-4">
+                {project.title}
+              </h2>
+              <p className="text-gray-400 leading-relaxed mb-8">
+                {project.desc}
+              </p>
+            </div>
+            
+            {/* Bottom Section: Tech Stack & Link */}
+            <div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech, i) => (
+                  <span key={i} className="px-3 py-1 text-xs font-mono font-medium text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
+                  View Source Code <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              ) : (
+                <span className="inline-flex items-center text-sm font-bold text-gray-600 cursor-not-allowed">
+                  Private Repository <span className="ml-2">🔒</span>
+                </span>
+              )}
+            </div>
           </div>
         ))}
       </div>
