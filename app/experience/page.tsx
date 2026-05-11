@@ -25,39 +25,39 @@ export default function Experience() {
 
   return (
     <main className="flex min-h-[80vh] flex-col items-center justify-start p-10 max-w-4xl mx-auto relative z-10">
-      <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-16 border-b border-gray-800/50 pb-6 w-full text-center">
+      <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--accent-2)] mb-16 border-b border-[color:var(--border)] pb-6 w-full text-center">
         Experience & Education
       </h1>
       
       {/* The Timeline Container */}
-      <div className="w-full relative border-l-2 border-gray-800/80 ml-4 md:ml-0">
+      <div className="w-full relative border-l-2 border-[color:var(--border)] ml-4 md:ml-0">
         {experiences.map((exp, index) => (
           <div key={index} className="mb-12 ml-8 md:ml-10 relative group">
             
             {/* The Glowing Timeline Dot */}
-            <span className="absolute flex items-center justify-center w-5 h-5 bg-blue-500 rounded-full -left-[43px] md:-left-[51px] ring-4 ring-[#0a0a0a] group-hover:bg-emerald-400 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.8)] transition-all duration-300"></span>
+            <span className="absolute flex items-center justify-center w-5 h-5 bg-[color:var(--accent)] rounded-full -left-[43px] md:-left-[51px] ring-4 ring-[color:var(--background)] group-hover:bg-[color:var(--accent-2)] group-hover:shadow-[0_0_15px_color-mix(in_srgb,var(--accent-2)_60%,transparent)] transition-all duration-300"></span>
             
             {/* The Glassmorphism Card */}
-            <div className="border border-gray-700/50 bg-[#0a0a0a]/80 backdrop-blur-md p-8 rounded-2xl hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500">
+            <div className="border border-[color:var(--border)] bg-[color:var(--surface)]/90 backdrop-blur-md p-8 rounded-2xl hover:border-[color:var(--accent)]/60 hover:shadow-[0_0_30px_color-mix(in_srgb,var(--accent)_18%,transparent)] transition-all duration-500">
               
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
-                <h3 className="text-2xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-2xl font-bold text-[color:var(--foreground)] group-hover:text-[color:var(--accent)] transition-colors">
                   {exp.role}
                 </h3>
                 
                 {/* Badge for Type (Work/Education) */}
-                <span className="w-fit px-3 py-1 text-xs font-mono font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                <span className="w-fit px-3 py-1 text-xs font-mono font-medium text-[color:var(--accent-2)] bg-[color:var(--accent-2)]/10 border border-[color:var(--accent-2)]/25 rounded-full">
                   {exp.type}
                 </span>
               </div>
 
-              <div className="text-sm font-mono text-blue-400 mb-4 flex items-center gap-2">
+              <div className="text-sm font-mono text-[color:var(--accent)] mb-4 flex items-center gap-2">
                 <span className="font-semibold">{exp.company}</span> 
-                <span className="text-gray-600">|</span> 
-                <span className="text-gray-400">{exp.date}</span>
+                <span className="text-[color:var(--muted)]">|</span> 
+                <span className="text-[color:var(--muted)]">{exp.date}</span>
               </div>
               
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-[color:var(--muted)] leading-relaxed">
                 {exp.desc}
               </p>
             </div>

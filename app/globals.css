@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #071022;
+  --foreground: #e2e8f0;
+  --surface: #0f172a;
+  --surface-elevated: #111c33;
+  --border: #243249;
+  --muted: #8ca3bf;
+  --accent: #60a5fa;
+  --accent-2: #2dd4bf;
+  --status-user: #f8fafc;
+  --status-ai: #4ade80;
+  --status-system: #93c5fd;
+  --grid: #3f4a5d22;
 }
 
 @theme inline {
@@ -12,15 +22,36 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root[data-theme="light"] {
+  --background: #f3f7ff;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-elevated: #f8fbff;
+  --border: #d4deed;
+  --muted: #52627d;
+  --accent: #2563eb;
+  --accent-2: #0891b2;
+  --status-user: #0f172a;
+  --status-ai: #15803d;
+  --status-system: #1d4ed8;
+  --grid: #64748b22;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  background-image: radial-gradient(circle at top, color-mix(in srgb, var(--accent) 10%, transparent), transparent 45%);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
 }

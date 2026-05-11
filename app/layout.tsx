@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
+import ThemeToggle from "./components/theme-toggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,25 +33,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-gray-200 selection:bg-blue-500/30 flex flex-col min-h-screen relative overflow-x-hidden`}>
+    <html lang="en" data-theme="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[color:var(--background)] text-[color:var(--foreground)] selection:bg-[color:var(--accent)]/30 flex flex-col min-h-screen relative overflow-x-hidden`}>
         
         {/* The Modern Grid Background */}
-        <div className="absolute inset-0 z-[-1] h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div className="bg-grid absolute inset-0 z-[-1] h-full w-full"></div>
         
         {/* Sticky Glassmorphism Navbar - Mobile Optimized */}
-        <nav className="sticky top-0 z-50 flex items-center justify-between p-4 md:p-6 max-w-5xl mx-auto w-full backdrop-blur-md border-b border-gray-800/50 bg-[#0a0a0a]/70">
-          <a href="/" className="text-xl md:text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 hover:opacity-80 transition-opacity whitespace-nowrap">
+        <nav className="sticky top-0 z-50 flex items-center justify-between p-4 md:p-6 max-w-5xl mx-auto w-full backdrop-blur-md border-b border-[color:var(--border)] bg-[color:var(--background)]/80">
+          <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--accent-2)] hover:opacity-80 transition-opacity whitespace-nowrap">
             Dev OS
-          </a>
+          </Link>
           <div className="flex items-center space-x-4 md:space-x-6">
-            <a href="/projects" className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Projects</a>
-            <a href="/experience" className="text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Experience</a>
+            <Link href="/projects" className="text-sm font-medium text-[color:var(--muted)] hover:text-[color:var(--accent)] transition-colors">Projects</Link>
+            <Link href="/experience" className="text-sm font-medium text-[color:var(--muted)] hover:text-[color:var(--accent)] transition-colors">Experience</Link>
+            <ThemeToggle />
             
             <a 
               href="/resume.pdf" 
               target="_blank" 
-              className="ml-2 md:ml-4 px-4 py-1.5 md:px-5 md:py-2 text-sm font-bold text-gray-900 bg-blue-500 rounded-lg hover:bg-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] transition-all duration-300"
+              className="ml-1 md:ml-2 px-4 py-1.5 md:px-5 md:py-2 text-sm font-bold text-white bg-[color:var(--accent)] rounded-lg hover:brightness-110 hover:shadow-[0_0_20px_color-mix(in_srgb,var(--accent)_45%,transparent)] transition-all duration-300"
             >
               Resume
             </a>
@@ -62,22 +65,22 @@ export default function RootLayout({
         </div>
 
         {/* The Contact Footer */}
-        <footer className="border-t border-gray-800/50 bg-[#0a0a0a]/90 backdrop-blur-sm py-8 mt-auto z-40 relative">
+        <footer className="border-t border-[color:var(--border)] bg-[color:var(--background)]/90 backdrop-blur-sm py-8 mt-auto z-40 relative">
           <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 text-sm w-full text-center md:text-left">© {new Date().getFullYear()} Geeth Wickramasinghe. All rights reserved.</p>
+            <p className="text-[color:var(--muted)] text-sm w-full text-center md:text-left">© {new Date().getFullYear()} Geeth Wickramasinghe. All rights reserved.</p>
             
             <div className="flex items-center justify-center space-x-6 w-full md:w-auto">
               
               {/* The original, native mailto link that works perfectly on mobile */}
               <a 
                 href="mailto:geeth.stack@gmail.com" 
-                className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium"
+                className="text-[color:var(--muted)] hover:text-[color:var(--accent)] transition-colors text-sm font-medium"
               >
                 Email
               </a>
               
-              <a href="https://linkedin.com/in/geeth-wickramasinghe" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">LinkedIn</a>
-              <a href="https://github.com/Geetharu" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-sm font-medium">GitHub</a>
+              <a href="https://linkedin.com/in/geeth-wickramasinghe" target="_blank" rel="noopener noreferrer" className="text-[color:var(--muted)] hover:text-[color:var(--accent)] transition-colors text-sm font-medium">LinkedIn</a>
+              <a href="https://github.com/Geetharu" target="_blank" rel="noopener noreferrer" className="text-[color:var(--muted)] hover:text-[color:var(--accent)] transition-colors text-sm font-medium">GitHub</a>
             </div>
           </div>
         </footer>
